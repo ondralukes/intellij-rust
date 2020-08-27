@@ -29,7 +29,7 @@ import org.rust.lang.utils.addToHolder
 class RsMatchCheckInspection : RsLocalInspectionTool() {
     override fun getDisplayName() = "Match Check"
 
-    override fun buildVisitor(holder: RsProblemsHolder, isOnTheFly: Boolean) = object : RsVisitor() {
+    override fun buildVisitor(holder: RsProblemsHolder, isOnTheFly: Boolean): RsVisitor? = object : RsVisitor() {
         override fun visitMatchExpr(matchExpr: RsMatchExpr) {
             val exprType = matchExpr.expr?.type ?: return
             if (exprType.containsTyOfClass(TyUnknown::class.java)) return
