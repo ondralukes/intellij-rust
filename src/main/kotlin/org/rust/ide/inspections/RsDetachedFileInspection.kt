@@ -62,6 +62,12 @@ class RsDetachedFileInspection : RsLocalInspectionTool() {
         return null
     }
 
+    override val requirements: Set<InspectionRequirement> = setOf(
+        InspectionRequirement.Toolchain,
+        InspectionRequirement.Project,
+        InspectionRequirement.Workspace
+    )
+
     private fun isInspectionEnabled(project: Project, file: VirtualFile): Boolean =
         !PropertiesComponent.getInstance(project).getBoolean(file.disablingKey, false)
 
