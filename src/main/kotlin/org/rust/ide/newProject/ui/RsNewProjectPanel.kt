@@ -30,6 +30,7 @@ import org.rust.ide.newProject.RsGenericTemplate
 import org.rust.ide.newProject.RsProjectTemplate
 import org.rust.ide.newProject.state.RsUserTemplatesState
 import org.rust.openapiext.UiDebouncer
+import java.awt.Dimension
 import javax.swing.DefaultListModel
 import javax.swing.JList
 import javax.swing.ListSelectionModel
@@ -88,6 +89,7 @@ class RsNewProjectPanel(
 
     val templateToolbar: ToolbarDecorator = ToolbarDecorator.createDecorator(templateList)
         .setToolbarPosition(ActionToolbarPosition.BOTTOM)
+        .setPreferredSize(Dimension(0, 125))
         .disableUpDownActions()
         .setAddAction {
             AddUserTemplateDialog().show()
