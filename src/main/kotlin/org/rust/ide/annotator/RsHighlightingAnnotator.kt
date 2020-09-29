@@ -52,6 +52,7 @@ class RsHighlightingAnnotator : AnnotatorBase() {
         }
 
         if (parent is RsLitExpr) {
+            if (element.elementType == FLOAT_LITERAL) return RsColor.NUMBER
             return when (parent.parent) {
                 is RsMetaItem, is RsMetaItemArgs -> RsHighlighter.map(element.elementType)
                 else -> null
@@ -63,6 +64,7 @@ class RsHighlightingAnnotator : AnnotatorBase() {
             // Although we remap tokens from identifier to keyword, this happens in the
             // parser's pass, so we can't use HighlightingLexer to color these
             in RS_CONTEXTUAL_KEYWORDS -> RsColor.KEYWORD
+
             Q -> if (parent is RsTryExpr) {
                 RsColor.Q_OPERATOR
             } else {

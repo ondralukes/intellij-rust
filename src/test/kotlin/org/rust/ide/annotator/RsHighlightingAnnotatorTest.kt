@@ -260,6 +260,12 @@ class RsHighlightingAnnotatorTest : RsAnnotatorTestBase(RsHighlightingAnnotator:
         }
     """, ignoreExtraHighlighting = false)
 
+    fun `test float literal`() = checkHighlighting("""
+        fn <FUNCTION>main</FUNCTION>() {
+            let a = <NUMBER>0.0</NUMBER>;
+        }
+    """)
+
     private fun checkHighlightingWithMacro(@Language("Rust") text: String) {
         checkHighlighting(text)
         checkHighlightingInsideMacroCall(text)
